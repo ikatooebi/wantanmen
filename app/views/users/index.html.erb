@@ -1,0 +1,17 @@
+<h1>Users一覧</h1>
+<table><th>id</th><th>name</th><th>kana</th><th>県名</th>
+   <% @users.each do |user|%>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.kana %></td>
+      <td><% user.addresses.each do |a| %>
+        <%=  a.prefecture %>
+      <% end %></td>
+      <td><%= link_to '詳細', user,  action: "show" %></td>
+      <td><%= link_to '削除', user, confirm: '本当に削除しますか？', method: :delete %></td>
+    </tr>
+
+  <% end %>
+</table>
+<%= link_to 'New User', new_user_path %>

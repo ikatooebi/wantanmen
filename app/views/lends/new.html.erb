@@ -1,0 +1,22 @@
+<h1>新規貸出</h1>
+
+<%= form_for(@lend) do |f| %>
+  <%= f.label :"借りる人" %>
+  <%= f.select :user_id, @target_user %><br />
+  <%= f.label :"借りたい本" %>
+  <%= f.select :book_id, @target_books %><br />
+  <%= f.submit %>
+<% end %>
+
+<!--
+<%= form_for(@lend) do |f| %>
+  <%= f.label :book_id %><br />
+  <%= f.text_field :book_id %><br />
+  <%= f.label :user_id %><br />
+  <%= f.text_field :user_id %><br />
+  <%= f.label :return_day %><br />
+  <%= f.date_select :return_day %><br />
+  <%= f.submit %>
+<% end %>
+-->
+<%= link_to 'Back', lends_path %>

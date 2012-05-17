@@ -1,0 +1,8 @@
+<h1>返却</h1>
+<%= form_for(@lend) do |f| %>
+  <%= f.label :book_id %><br />
+  <%= f.text_field :book_id %>
+  <%= f.date_select :return_day %>
+  <%= f.submit %>
+<% end %>
+<%= link_to 'Back', lend_path%>

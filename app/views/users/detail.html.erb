@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<b>名前:</b>
+<%= @user.name %>
+</p>
+
+<p>
+<b>仮名:</b>
+<%= @user.kana %>
+</p>
+
+<p>
+<b>生年月日:</b>
+<%= @user.birthday %>
+</p>
+
+<%= link_to 'Home', '/' %> |
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', user_path %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<b>名前:</b>
+<%= @user.name %>
+</p>
+<p>
+<b>仮名:</b>
+<%= @user.kana %>
+</p>
+<p>
+<b>生年月日:</b>
+<%= @user.birthday %>
+</p>
+<p>
+<b>住所:</b>
+<% @user.addresses.each do |a| %>
+  <%= a.prefecture %>
+<% end %>
+</p>
+<p>
+<h2>貸し出し中の本</h2>
+<table border =1><th>本ID</th><th>貸出日</th>
+<% @now_rentals.each do |f| %>
+  <tr>
+    <td><%= f.book_id %></td>
+    <td><%= f.created_at %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'Home', '/' %> *
+<%= link_to 'Edit', edit_user_path(@user) %> *
+<%= link_to 'Back', user_path %>

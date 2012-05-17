@@ -1,0 +1,14 @@
+<h1>Books一覧</h1>
+<table><th>id</th><th>title</th><th>kana</th><th>isbn</th>
+   <% @books.each do |book|%>
+    <tr>
+      <td><%= book.id %></td>
+      <td><%= book.name %></td>
+      <td><%= book.author %></td>
+      <td><%= book.isbn %></td>
+      <td><%= link_to '詳細', book, action: "show" %></td>
+      <td><%= link_to '削除', book, confirm: '本当に削除しますか？', method: :delete %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to 'New Book', new_book_path %>

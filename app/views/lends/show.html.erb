@@ -1,0 +1,14 @@
+<b>貸出日:</b>
+<%= @lend.created_at %><br />
+
+<b>貸し出した本:</b>
+<%= @lend.book_id %><br />
+
+<b>借りた人:</b>
+<%= @lend.user_id %><br />
+
+<b>返却日:</b>
+<%= @lend.return_day %><br />
+
+<%= link_to '返却', edit_lend_path(@lend) %> *
+<%= link_to 'Back', lends_path %>

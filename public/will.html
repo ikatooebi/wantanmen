@@ -1,0 +1,66 @@
+<html>
+	<head><title>必要なページ</title></head>
+	<body>
+		<table><tr>
+				<td>
+					<ul><li>@トップページ</li>
+						<ul>
+							<li>各ページへのリンク</li>
+						</ul>
+					</ul>
+
+					<ul><li>貸出中の本一覧(予約機能を搭載するまでは不要？)</li>
+						<ul>
+							<li>user,book,貸出日</li>
+						</ul>
+					</ul>
+<!--
+					<ul><li>@返却ページ</li>
+						<ul>
+							<li>{book_id}</li>
+						</ul>
+					</ul>
+					-->
+					<ul><li>貸出履歴(ユーザ単位、本単位（人気ランキング的な）)</li>
+						<ul>
+							<li>user,book,貸出日,返却日</li>
+						</ul>
+					</ul>
+
+					<ul><li>@user一覧ページ</li>
+						<ul>
+							<li>ID,user1<a href="">クリックでユーザー詳細(貸出ページ)</a></li>
+							<li>add user page</li>
+						</ul>
+					</ul>
+
+					<ul><li>@user詳細ページ(貸出ページ)</li>
+						<ul>
+							<li>ID,name,kana,birthday,編集</li>
+							<li>{借りている本、貸出日}</li>
+							<li>{貸し出すbook_id}</li>
+						</ul>
+					</ul>
+
+					<ul><li>book一覧ページ,返却</li>
+						<ul>
+							<li>ID,タイトル,ISBN、貸出中表示？</li>
+							<li>add book へのリンク</li>
+						</ul>
+					</ul>
+
+					<ul><li>@book追加ページ</li>
+						<ul>
+							<li>ID,タイトル,ISBN</li>
+						</ul>
+					</ul>
+
+					<ul><li>@user追加ページ</li>
+						<ul>
+							<li>ID,タイトル,ISBN</li>
+						</ul>
+					</ul>User一覧、book一覧,book詳細（過去の借りた人一覧）,book一覧
+			</td></tr>
+		</table>
+	</body>
+</html>

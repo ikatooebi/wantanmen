@@ -1,0 +1,33 @@
+<h1>貸し出し履歴</h1>
+<%= link_to '新規貸出', new_lend_path %>
+<h2>未返却</h2>
+<table border = 1><th>借りた人</th><th>本のID</th><th>本の名前</th><th>返却する</th>
+   <% @lending.each do |lend|%>
+    <tr>
+      <td><%= lend.user_id %></td>
+      <td><%= lend.book_id %></td>
+      <td><%= lend.book_id %></td>
+      <td><%= link_to '返却', edit_lend_path(lend)%></td>
+      <!--
+      <td><%= link_to '削除', lend, confirm: '本当に削除しますか？', method: :delete %></td>
+      -->
+  </tr>
+<% end %>
+</table>
+
+<h2>返却済み</h2>
+<table border = 1><th>借りた人</th><th>貸出した本</th><th>貸出日</th><th>返却日</th>
+   <% @lends.each do |lend|%>
+    <tr>
+      <td><%= lend.user_id %></td>
+      <td><%= lend.book_id %></td>
+      <td><%= lend.created_at.to_s(:db) %></td>
+      <td><%= lend.return_day %></td>
+      <!--
+      <td><%= link_to '編集', edit_lend_path(lend)%></td>
+      <td><%= link_to '削除', lend, confirm: '本当に削除しますか？', method: :delete %></td>
+      -->
+  </tr>
+<% end %>
+</table>
+<%= link_to '新規貸出', new_lend_path %>

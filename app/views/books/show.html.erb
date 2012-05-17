@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<b>書名:</b>
+<%= @book.name %><br />
+<b>作者:</b>
+<%= @book.author %><br />
+<b>ISBN:</b>
+<%= @book.isbn %><br />
+<p>
+<b>貸出履歴</b><br />
+<table border =1><th>借りた人</th><th>貸出日</th><th>返却日</th>
+  <% @lental_history.each do |f| %>
+    <tr>
+      <td><%= f.user_id %></td>
+      <td><%= f.created_at %></td>
+      <td><%= f.return_day %></td>
+    </tr>
+  <% end %>
+</table>
+</p>
+<%= link_to 'Edit', edit_book_path(@book) %> *
+<%= link_to 'Back', books_path %>
