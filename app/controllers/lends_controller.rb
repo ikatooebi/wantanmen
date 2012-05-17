@@ -11,7 +11,14 @@ class LendsController < ApplicationController
   def new
     @lend = Lend.new
     @target_user = User.find(:all).map {|u| [ u.name, u.id ] }
-    @target_books = Book.find(:all).map {|u| [ u.name, u.id ] }
+    @target_books = Book.find(:all)
+    @target_books.each do |f|
+      if Book.find(f.id).now_rental?
+        @target_books.delete(f)
+      end
+    end
+    @target_books.map {|u| [ u.name, u.id ] }
+    @books = Book.find(:all).map {|u| [ u.name, u.id] }
   end
 
   def create

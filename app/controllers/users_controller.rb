@@ -65,4 +65,9 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def search
+    @users = User.find(:all, 
+                       :conditions => ["name=?", params[:search_string]])
+  end
 end

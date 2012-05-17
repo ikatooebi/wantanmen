@@ -14,5 +14,4 @@ class Book < ActiveRecord::Base
   def now_rental?
     lends.now_rentals.size > 0
   end
-
 end
