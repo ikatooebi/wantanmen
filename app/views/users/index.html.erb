@@ -6,11 +6,14 @@
   <% end-%>
 </table>
 
-
-
-<table><th>id</th><th>name</th><th>kana</th><th>県名</th>
+<table><th>画像</th><th>id</th><th>name</th><th>kana</th><th>県名</th>
   <% @users.each do |user|%>
     <tr>
+      <% if user.cover_image %>
+        <td><%=image_tag user.cover_image.thumb('20x20').url %></td>
+      <% else %>
+        <td>&nbsp;</td>
+      <% end %>
       <td><%= user.id %></td>
       <td><%= user.name %></td>
       <td><%= user.kana %></td>

@@ -13,6 +13,10 @@
 <%= @user.birthday %>
 </p>
 <p>
+<% if @user.cover_image %>
+<%=image_tag @user.cover_image.thumb('200x200').url %>
+<% end %>
+<p>
 <b>住所:</b>
 <% @user.addresses.each do |a| %>
   <%= a.prefecture %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517064115) do
+ActiveRecord::Schema.define(:version => 20120518025313) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20120517064115) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.datetime "deleted_at"
+    t.string   "pdf_uid"
+    t.string   "pdf_name"
   end
 
   add_index "books", ["deleted_at"], :name => "index_books_on_deleted_at"
@@ -48,12 +50,14 @@ ActiveRecord::Schema.define(:version => 20120517064115) do
   add_index "lends", ["user_id", "book_id", "return_day", "deleted_at"], :name => "index_lends_on_user_id_and_book_id_and_return_day_and_deleted_at", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "kana",       :null => false
-    t.date     "birthday",   :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "name",             :null => false
+    t.string   "kana",             :null => false
+    t.date     "birthday",         :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.datetime "deleted_at"
+    t.string   "cover_image_uid"
+    t.string   "cover_image_name"
   end
 
   add_index "users", ["deleted_at"], :name => "index_users_on_deleted_at"

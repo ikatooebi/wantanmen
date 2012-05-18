@@ -6,6 +6,10 @@
 <%= @book.author %><br />
 <b>ISBN:</b>
 <%= @book.isbn %><br />
+<% if @book.pdf %>
+<b>PDF:</b>
+<a href=http://lib_admin<%= @book.pdf.url %>>pdf</a>
+<% end %>
 <p>
 <b>貸出履歴</b><br />
 <table border =1><th>借りた人</th><th>貸出日</th><th>返却日</th>

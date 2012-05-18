@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
-  attr_accessible :author, :isbn, :name
-  
+  image_accessor :pdf 
+  attr_accessible :author, :isbn, :name, :pdf
   acts_as_paranoid
   has_many :lends, dependent: :destroy
   has_many :lent_users, through: :lends, source: :user

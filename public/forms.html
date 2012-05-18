@@ -1,0 +1,44 @@
+<script type="text/javascript">
+	var counter = 0;
+	function AddTableRows(){
+		// カウンタを回す
+		counter++;
+
+		var table1 = document.getElementById("table1");
+		var row1 = table1.insertRow(counter);
+		var cell1 = row1.insertCell(0);
+		var cell2 = row1.insertCell(1);
+		var cell3 = row1.insertCell(2);
+
+		// class の付与は UserAgent によって
+		// 挙動が違うっぽいので念のため両方の方法で
+		cell1.setAttribute("class","name");
+		cell2.setAttribute("class","address");
+		cell3.setAttribute("class","tel");
+		cell1.className = 'name';
+		cell2.className = 'address';
+		cell3.className = 'tel';
+
+		var HTML1 = '<input type="text" name="name' + counter + '" value="" size="10" maxlength="20" />';
+		var HTML2 = '<input type="text" name="address' + counter + '" value="" size="10" maxlength="20" />';
+		var HTML3 = '<input type="text" name="tel' + counter + '" value="" size="10" maxlength="20" />';
+		cell1.innerHTML = HTML1;
+		cell2.innerHTML = HTML2;
+		cell3.innerHTML = HTML3;
+	}
+</script>
+
+<table border="1" cellspacing="0" cellpadding="4" id="table1">
+	<tr>
+		<th>名前</th>
+		<th>住所</th>
+		<th>TEL</th>
+		</tr><tr>
+		<td class="name"><input type="text" name="name0" value="" size="10" maxlength="20" /></td>
+		<td class="address"><input type="text" name="address0" value="" size="10" maxlength="20" /></td>
+		<td class="tel"><input type="text" name="tel0" value="" size="10" maxlength="20" /></td>
+	</tr>
+</table>
+<form method="GET" action="#">
+	<input type="button" value="テーブルに行を追加" onClick="AddTableRows();" />
+</form>
