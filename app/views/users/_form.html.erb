@@ -1,3 +1,4 @@
+<h1>User追加</h1>
 <%= form_for @user, :html => {:multipart => true} do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br />
@@ -5,14 +6,15 @@
   <%= f.text_field :kana %><br />
   <%= f.label :birthday %>
   <%= f.text_field :birthday %><br />
-  <% if @user.cover_image %>
-    <%=image_tag @user.cover_image.thumb('200x200').url %><br />
-  <% end %>
   <%= f.label :"画像" %>
   <%= f.file_field :cover_image %><br />
-  <%= f.fields_for :addresses do|f2| %>
-    <%= f2.label :prefecture %>
-    <%= f2.text_field :prefecture%><br />
+  <%= f.fields_for :prefecture do|f2| %>
+<div id="asdf">
+    <%= render "addresses_fields", :f => f2 %>
   <% end %>
+  <%= link_to_add_fields "add Addresses" , f, :addresses, "#asdf"%>
+</div>
   <%= f.submit %>
 <% end %>
+<%= link_to 'Home', '/' %> *
+<%= link_to 'Back', users_path %>

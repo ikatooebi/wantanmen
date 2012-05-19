@@ -1,5 +1,5 @@
-<li class="fields">
-  <%= f3.hidden_field :id %>
-  <%= f3.text_field :prefecture  %>
-<%= link_to_remove_fields 'Remove Prefecture', f3 %>
-</li>
+<p class="fields">
+<%= f.label :prefecture, "Prefecture" %>
+<%= f.text_field :prefecture %>
+<%= link_to_remove_fields "remove", f %>
+</p>
