@@ -22,7 +22,7 @@
       <td><%= lend.user_id %></td>
       <td><%=Book.find(lend.book_id).name %></td>
       <td><%= lend.created_at.to_s(:db) %></td>
-      <td><%= lend.return_day %></td>
+      <td><%= lend.return_day.to_s(:db) %></td>
       <!--
       <td><%= link_to '編集', edit_lend_path(lend)%></td>
       <td><%= link_to '削除', lend, confirm: '本当に削除しますか？', method: :delete %></td>

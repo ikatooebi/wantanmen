@@ -1,9 +1,8 @@
 class BooksController < ApplicationController
-  def index
-    unless current_user
-      redirect_to root_path, notice: "Please login your twitter account"
-    end
+  #before_filter :auth, only: [:edit]
+  before_filter :auth
 
+  def index 
     @books = Book.all
 
   end

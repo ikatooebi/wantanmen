@@ -5,4 +5,4 @@ require File.expand_path('../application', __FILE__)
 LibAdmin::Application.initialize!
 
 # time_zone
-# config.time_zone = 'Tokyo'
+#config.time_zone = 'Tokyo'

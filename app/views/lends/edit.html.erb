@@ -2,6 +2,7 @@
 <%= form_for(@lend) do |f| %>
   <%= f.label :book_id %><br />
   <%= f.text_field :book_id %>
+  <% Time.zone = 'Asia/Tokyo' %>
   <%= f.datetime_select :return_day %>
   <%= f.submit %>
 <% end %>

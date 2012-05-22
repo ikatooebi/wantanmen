@@ -1,8 +1,6 @@
 class LendsController < ApplicationController
+  before_filter :auth
   def index
-    unless current_user
-      redirect_to root_path, notice: "Please login your twitter account"
-    end
     @lends = Lend.where("return_day IS NOT NULL")
     @lending = Lend.now_rentals
   end
@@ -25,6 +23,7 @@ class LendsController < ApplicationController
   end
 
   def create
+    Time.zone = 'Asia/Tokyo'
     @lend = Lend.new(params[:lend])
     respond_to do |format|
       if @lend.save

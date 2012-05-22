@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :auth
   def index
-    unless current_user
-      redirect_to root_path, notice: "Please login your twitter account"
-    end
     @users = User.all
     @address = Address.find(:all).map {|u| [ u.prefecture] }
   end

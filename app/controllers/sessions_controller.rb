@@ -17,7 +17,6 @@ class SessionsController < ApplicationController
     redirect_to root_url, :notice => 'logout'
   end
 
-
   def create
     auth = request.env["omniauth.auth"]
     user = Twi.find_by_provider_and_uid(auth["provider"], auth["uid"]) ||
