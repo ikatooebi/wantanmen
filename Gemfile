@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
-
 gem 'rails', '3.2.3'
 gem 'therubyracer'
-
+gem 'mail'
+gem 'delayed_job_active_record'
+gem 'rake', '0.9.2'
+gem 'daemons'
+gem 'omniauth'
+gem 'omniauth-twitter'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly', '~>0.9.8'
 # Bundle edge Rails instead:

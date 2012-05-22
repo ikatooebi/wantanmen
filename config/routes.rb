@@ -1,10 +1,16 @@
 LibAdmin::Application.routes.draw do
+  get "welcome/index"
+
 #  get "lends/index"
   resources :lends
   resources :books
   resources :users
+  #OmniAuth
+  match "auth/twitter/callback" => "sessions#login"
+  match "/logout" => "sessions#logout", :as => :logout
   
-  match 'users/detail/:id' => 'users#detail'
+  get 'get_api/book' 
+  
 #  get "books/index"
 #  get "books/edit"
 #  get "books/new"
@@ -14,6 +20,7 @@ LibAdmin::Application.routes.draw do
 #  get "users/index"
 #  get "users/show"
 #  get "users/new"
+#  match 'users/detail/:id' => 'users#detail'
 
 
 
@@ -66,11 +73,11 @@ LibAdmin::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'users#index'
+   root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  match ':controller(/:action(/:id))(.:format)'
+   match ':controller(/:action(/:id))(.:format)'
 end

@@ -1,5 +1,8 @@
 class LendsController < ApplicationController
   def index
+    unless current_user
+      redirect_to root_path, notice: "Please login your twitter account"
+    end
     @lends = Lend.where("return_day IS NOT NULL")
     @lending = Lend.now_rentals
   end
@@ -10,14 +13,14 @@ class LendsController < ApplicationController
 
   def new
     @lend = Lend.new
-    @target_user = User.find(:all).map {|u| [ u.name, u.id ] }
+    @target_users = User.find(:all).map {|u| [ u.name, u.id ] }
     @target_books = Book.find(:all)
     @target_books.each do |f|
       if Book.find(f.id).now_rental?
         @target_books.delete(f)
       end
     end
-    @target_books.map {|u| [ u.name, u.id ] }
+    @target_books = @target_books.map {|u| [ u.name, u.id ] }
     @books = Book.find(:all).map {|u| [ u.name, u.id] }
   end
 
@@ -55,5 +58,4 @@ class LendsController < ApplicationController
       end
     end
   end
-
 end

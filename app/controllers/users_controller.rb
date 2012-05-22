@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def index
+    unless current_user
+      redirect_to root_path, notice: "Please login your twitter account"
+    end
     @users = User.all
     @address = Address.find(:all).map {|u| [ u.prefecture] }
   end
@@ -25,6 +28,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     respond_to do |format|
       if @user.save
+        UserMailer.delay.welcome_email(@user)
         format.html { redirect_to @user, notice: ' created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -66,6 +70,6 @@ class UsersController < ApplicationController
 
   def search
     @users = User.find(:all, 
-                       :conditions => ["name=?", params[:search_string]])
+                       :conditions => ["name like ?", "%"+params[:search_string]+"%"])
   end
 end

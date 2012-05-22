@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   acts_as_paranoid
   attr_accessible :birthday, :kana, :name, :cover_image, :retained_cover_image, :addresses_attributes
   has_many :addresses, dependent: :destroy
-  accepts_nested_attributes_for :addresses 
+  accepts_nested_attributes_for :addresses, :allow_destroy => true
   has_many :lends, dependent: :destroy, include: :book
   has_many :rented_book, through: :lends, source: :book
   validates :birthday, presence: true

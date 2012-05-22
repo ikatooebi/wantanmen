@@ -1,14 +1,8 @@
 <h1>新規貸出</h1>
-<h2> 貸し出せる本</h2>
-<% @target_books.each do |f| %>
-  <%= f.id %>
-  <%= f.name %>
-<% end %>
-
 <!--
 <%= form_for(@lend) do |f| %>
   <%= f.label :"借りる人" %>
-  <%= f.select :user_id, @target_user %><br />
+  <%= f.select :user_id, @target_users %><br />
   <%= f.label :"借りたい本" %>
   <%= f.select :book_id, @target_books %><br />
   <%= f.submit %>
@@ -16,9 +10,9 @@
 -->
 <%= form_for(@lend) do |f| %>
   <%= f.label :user_id %><br />
-  <%= f.select :user_id, @target_user %><br />
+  <%= f.select :user_id, @target_users %><br />
   <%= f.label :book_id %><br />
-  <%= f.select :book_id, @books %><br />
+  <%= f.select :book_id, @target_books %><br />
   <%= f.submit %>
 <% end %>
 <%= link_to 'Back', lends_path %>

@@ -1,6 +1,11 @@
 class BooksController < ApplicationController
   def index
+    unless current_user
+      redirect_to root_path, notice: "Please login your twitter account"
+    end
+
     @books = Book.all
+
   end
 
   def edit
@@ -55,5 +60,10 @@ class BooksController < ApplicationController
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def search
+    @books = Book.find(:all, 
+                       :conditions => ["name like ?", "%" + params[:search_string] + "%"])
   end
 end

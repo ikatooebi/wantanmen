@@ -17,7 +17,6 @@ class Lend < ActiveRecord::Base
 
 
   scope :now_rentals, conditions: { return_day:nil }
-  
   #before_save :hoge
   # def hoge  
   #end  

@@ -2,7 +2,7 @@
 <%= form_for(@lend) do |f| %>
   <%= f.label :book_id %><br />
   <%= f.text_field :book_id %>
-  <%= f.date_select :return_day %>
+  <%= f.datetime_select :return_day %>
   <%= f.submit %>
 <% end %>
 <%= link_to '一覧', lends_path%>
