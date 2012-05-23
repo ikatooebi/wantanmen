@@ -10,9 +10,9 @@
 <div id="address">
   <%= f.fields_for :addresses do |address| %>
     <%= render "addresses_fields", :f => address %>
-</div>
   <% end %>
-  <%= link_to_add_fields "add Addresses" , f, :addresses, "#address"%><br />
+</div>
+  <%= link_to_add_fields "都道府県追加" , f, :addresses, "#address"%><br />
   <%= f.submit %>
 <% end %>
 <%= link_to 'Home', '/' %> *

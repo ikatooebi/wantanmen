@@ -2,16 +2,24 @@
 <h1>Users一覧</h1>
 <table id="search">
   <%=form_tag :action => 'search' do-%>
-    <%= text_field_tag :search_string %>
+    id<%= text_field_tag :search_id %>
+    名前<%= text_field_tag :search_name %>
+    <%= radio_button_tag :match, 'and', true %>and
+    <%= radio_button_tag :match, 'or' %>or
     <%= submit_tag 'Search' %> 
   <% end-%>
 </table>
 
 
 
-<table><th>id</th><th>name</th><th>kana</th><th>県名</th>
+<table><th>画像</th><th>id</th><th>name</th><th>kana</th><th>県名</th>
   <% @users.each do |user|%>
     <tr>
+      <% if user.cover_image %>
+        <td><%=image_tag user.cover_image.thumb('20x20').url %></td>
+      <% else %>
+        <td>&nbsp;</td>
+      <% end %>
       <td><%= user.id %></td>
       <td><%= user.name %></td>
       <td><%= user.kana %></td>
@@ -24,5 +32,5 @@
 
 <% end %>
 </table>
-<%= link_to 'Home', '/' %>
+<%= link_to 'Home', '/' %> *
 <%= link_to 'New User', new_user_path %>

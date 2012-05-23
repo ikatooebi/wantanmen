@@ -30,7 +30,8 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice: ' created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
-        format.html { render action: "new" }
+        #format.html { render action: "new" }
+        format.html { render json: @user.errors, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -60,14 +61,20 @@ class UsersController < ApplicationController
         format.html { redirect_to @user, notice:'updated'}
         format.json { head:no_content }
       else
-        format.html { render action: 'edit' }
+        #format.html { render action: 'edit' }
+        format.html { render json: @user.errors, status: :unprocessable_entity }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def search
-    @users = User.find(:all, 
-                       :conditions => ["name like ?", "%"+params[:search_string]+"%"])
+    if params[:match] == 'and'
+      #@users = User.find(:all, conditions:  ["name like ?", "%" + params[:search_name] + "%"])
+      @users = User.id_is(params[:search_id]).name_is(params[:search_name])
+    else
+      @users = User.id_or_name_is(params[:search_id],params[:search_name])
+    end
   end
+
 end

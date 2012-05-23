@@ -3,8 +3,8 @@ class Address < ActiveRecord::Base
   attr_accessible :prefecture, :user_id
   belongs_to :user
 
-  validates :prefecture, presence: true, uniqueness: {scope: :user_id}
-  #validates :user_id, presence: true
+  validates :prefecture, presence: true#, uniqueness: {scope: :user_id}
+  #validates_uniqueness_of :prefecture, :scope => :user_id
 
   scope :pres, conditions:  "user_id is NOT NULL" 
 end
