@@ -45,5 +45,6 @@ class User < ActiveRecord::Base
 
   scope :id_is,lambda{|id| where("id like ?", "%#{id}%")}
   scope :name_is, lambda{|name| where("name like ?", "%#{name}%")}
-  scope :id_or_name_is, lambda{|id,name| where("id like ? or name like ?", "%#{id}%","%#{name}%")}
+  scope :id_is_or_name_is, lambda{|id,name| where("id like ? or name like ?", "%#{id}%","%#{name}%")}
+
 end

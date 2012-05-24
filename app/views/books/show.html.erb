@@ -16,8 +16,8 @@
   <% @lental_history.each do |f| %>
     <tr>
       <td><%= f.user_id %></td>
-      <td><%= f.created_at %></td>
-      <td><%= f.return_day %></td>
+      <td><%= f.created_at.strftime "%Y/%m/%d %H:%M:%S" %></td>
+      <td><%= f.return_day.strftime "%Y/%m/%d %H:%M:%S" %></td>
     </tr>
   <% end %>
 </table>

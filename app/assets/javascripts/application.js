@@ -23,3 +23,17 @@ function add_fields(link, association, content, target) {
   var regexp = new RegExp("new_" + association, "g")
   $(target).append(content.replace(regexp, new_id));
 }
+window.onload = function(){
+	for (i = 0; i < 99; i++) {
+		a = "user_addresses_attributes_" + i + "__destroy";
+		b = "user_addresses_attributes_" + i + "_prefecture"
+		if(document.getElementById(a).value == "true"){
+			//document.getElementById(b).style.display = "none";
+			if (document.getElementById(a).parentNode){
+				document.getElementById(a).parentNode.style.display= "none";
+			} else {
+				i = 99;
+			}
+		}
+	}
+}

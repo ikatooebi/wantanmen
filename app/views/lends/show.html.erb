@@ -1,5 +1,5 @@
 <b>貸出日:</b>
-<%= @lend.created_at %><br />
+<%= @lend.created_at.strftime "%Y/%m/%d %H:%M:%S"  %><br />
 
 <b>貸し出した本:</b>
 <%= @lend.book_id %><br />
@@ -8,7 +8,8 @@
 <%= @lend.user_id %><br />
 
 <b>返却日:</b>
-<%= @lend.return_day %><br />
-
+<% if @lend.return_day %>
+  <%= @lend.return_day.strftime "%Y/%m/%d %H:%M:%S"  %><br />
+<% end %>
 <%= link_to '返却', edit_lend_path(@lend) %> *
 <%= link_to 'Back', lends_path %>

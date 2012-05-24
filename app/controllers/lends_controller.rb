@@ -45,6 +45,7 @@ class LendsController < ApplicationController
   end
 
   def update
+    Time.zone = 'Asia/Tokyo'
     @lend = Lend.find(params[:id])
 
     respond_to do |format|

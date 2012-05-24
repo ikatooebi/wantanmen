@@ -1,3 +1,6 @@
+<% unless @user.errors.full_messages == []%>
+  <font color = "red"><%= @user.errors.full_messages %></font>
+<% end %>
 <p id="notice"><%= notice %></p>
 <h1>User追加</h1>
 <%= render 'form' %>
